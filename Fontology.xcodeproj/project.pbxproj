@@ -11,6 +11,11 @@
 		0F9459BE2BB0E20200FB96BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459BD2BB0E20200FB96BA /* ContentView.swift */; };
 		0F9459C02BB0E20300FB96BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F9459BF2BB0E20300FB96BA /* Assets.xcassets */; };
 		0F9459C32BB0E20300FB96BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F9459C22BB0E20300FB96BA /* Preview Assets.xcassets */; };
+		0F9459CC2BB0E2C800FB96BA /* TypographyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459CB2BB0E2C800FB96BA /* TypographyManager.swift */; };
+		0F9459D12BB0E2EF00FB96BA /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D02BB0E2EF00FB96BA /* Models.swift */; };
+		0F9459D32BB0E31A00FB96BA /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D22BB0E31A00FB96BA /* DrawingView.swift */; };
+		0F9459D52BB0E32800FB96BA /* CreateAlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D42BB0E32800FB96BA /* CreateAlphabetView.swift */; };
+		0F9459D72BB0E34000FB96BA /* AddTypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D62BB0E34000FB96BA /* AddTypographyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		0F9459BD2BB0E20200FB96BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0F9459BF2BB0E20300FB96BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F9459C22BB0E20300FB96BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0F9459CB2BB0E2C800FB96BA /* TypographyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypographyManager.swift; sourceTree = "<group>"; };
+		0F9459D02BB0E2EF00FB96BA /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		0F9459D22BB0E31A00FB96BA /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		0F9459D42BB0E32800FB96BA /* CreateAlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAlphabetView.swift; sourceTree = "<group>"; };
+		0F9459D62BB0E34000FB96BA /* AddTypographyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTypographyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +45,7 @@
 		0F9459AF2BB0E20200FB96BA = {
 			isa = PBXGroup;
 			children = (
+				0F9459CA2BB0E2BE00FB96BA /* Managers */,
 				0F9459BA2BB0E20200FB96BA /* Fontology */,
 				0F9459B92BB0E20200FB96BA /* Products */,
 			);
@@ -51,8 +62,9 @@
 		0F9459BA2BB0E20200FB96BA /* Fontology */ = {
 			isa = PBXGroup;
 			children = (
+				0F9459CE2BB0E2E200FB96BA /* Models */,
+				0F9459CD2BB0E2DA00FB96BA /* Views */,
 				0F9459BB2BB0E20200FB96BA /* FontologyApp.swift */,
-				0F9459BD2BB0E20200FB96BA /* ContentView.swift */,
 				0F9459BF2BB0E20300FB96BA /* Assets.xcassets */,
 				0F9459C12BB0E20300FB96BA /* Preview Content */,
 			);
@@ -65,6 +77,33 @@
 				0F9459C22BB0E20300FB96BA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0F9459CA2BB0E2BE00FB96BA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0F9459CB2BB0E2C800FB96BA /* TypographyManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		0F9459CD2BB0E2DA00FB96BA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0F9459BD2BB0E20200FB96BA /* ContentView.swift */,
+				0F9459D22BB0E31A00FB96BA /* DrawingView.swift */,
+				0F9459D42BB0E32800FB96BA /* CreateAlphabetView.swift */,
+				0F9459D62BB0E34000FB96BA /* AddTypographyView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0F9459CE2BB0E2E200FB96BA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F9459D02BB0E2EF00FB96BA /* Models.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +176,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F9459CC2BB0E2C800FB96BA /* TypographyManager.swift in Sources */,
+				0F9459D52BB0E32800FB96BA /* CreateAlphabetView.swift in Sources */,
 				0F9459BE2BB0E20200FB96BA /* ContentView.swift in Sources */,
+				0F9459D32BB0E31A00FB96BA /* DrawingView.swift in Sources */,
+				0F9459D72BB0E34000FB96BA /* AddTypographyView.swift in Sources */,
 				0F9459BC2BB0E20200FB96BA /* FontologyApp.swift in Sources */,
+				0F9459D12BB0E2EF00FB96BA /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

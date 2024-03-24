@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct FontologyApp: App {
+    @StateObject var typographyManager = TypographyManager()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(typographyManager)
         }
     }
 }
