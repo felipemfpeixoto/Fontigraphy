@@ -16,6 +16,7 @@
 		0F9459D32BB0E31A00FB96BA /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D22BB0E31A00FB96BA /* DrawingView.swift */; };
 		0F9459D52BB0E32800FB96BA /* CreateAlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D42BB0E32800FB96BA /* CreateAlphabetView.swift */; };
 		0F9459D72BB0E34000FB96BA /* AddTypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D62BB0E34000FB96BA /* AddTypographyView.swift */; };
+		0F9459D92BB18B2400FB96BA /* TestDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D82BB18B2400FB96BA /* TestDrawingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		0F9459D22BB0E31A00FB96BA /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		0F9459D42BB0E32800FB96BA /* CreateAlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAlphabetView.swift; sourceTree = "<group>"; };
 		0F9459D62BB0E34000FB96BA /* AddTypographyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTypographyView.swift; sourceTree = "<group>"; };
+		0F9459D82BB18B2400FB96BA /* TestDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDrawingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			children = (
 				0F9459BD2BB0E20200FB96BA /* ContentView.swift */,
 				0F9459D22BB0E31A00FB96BA /* DrawingView.swift */,
+				0F9459D82BB18B2400FB96BA /* TestDrawingView.swift */,
 				0F9459D42BB0E32800FB96BA /* CreateAlphabetView.swift */,
 				0F9459D62BB0E34000FB96BA /* AddTypographyView.swift */,
 			);
@@ -183,6 +186,7 @@
 				0F9459D72BB0E34000FB96BA /* AddTypographyView.swift in Sources */,
 				0F9459BC2BB0E20200FB96BA /* FontologyApp.swift in Sources */,
 				0F9459D12BB0E2EF00FB96BA /* Models.swift in Sources */,
+				0F9459D92BB18B2400FB96BA /* TestDrawingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

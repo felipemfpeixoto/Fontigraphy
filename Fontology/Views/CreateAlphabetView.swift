@@ -101,7 +101,7 @@ struct CreateAlphabetView: View {
                 ScrollView {
                     LazyVGrid(columns: Array(repeating: GridItem(.fixed(itemSize), spacing: spacing), count: Int(itemsPerRow)), spacing: spacing) {
                         ForEach(alphabetAndNumbers, id: \.self) { element in
-                            NavigationLink(destination: DetailView(item: element)) {
+                            NavigationLink(destination: TestDrawingView(character: element)) {
                                 ZStack {
                                     ZStack {
                                         Rectangle()
