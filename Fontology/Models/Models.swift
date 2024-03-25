@@ -1,8 +1,10 @@
 import Foundation
+import PencilKit
 
 struct Character: Codable {
     var character: String
     var svgString: String
+    var drawing: PKDrawing?
 }
 
 struct Typography: Codable {

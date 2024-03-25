@@ -1,4 +1,5 @@
 import Foundation
+import PencilKit
 
 class TypographyManager: ObservableObject {
     @Published var myTypographies = MyTypographies(createdTypographies: [])
@@ -46,6 +47,7 @@ class TypographyManager: ObservableObject {
         do {
             let data = try JSONEncoder().encode(myTypographies)
             try data.write(to: fileURL)
+            print(data)
         } catch {
             print("Error saving typographies: \(error.localizedDescription)")
         }
@@ -58,13 +60,25 @@ class TypographyManager: ObservableObject {
 
         // Adicionando caracteres do alfabeto
         for char in alphabetCharacters {
-            characters.append(Character(character: String(char), svgString: ""))
+            characters.append(Character(character: String(char), svgString: "", drawing: nil))
         }
 
         print(characters)
         
         let newTypography = Typography(name: name, characters: characters)
         myTypographies.createdTypographies.append(newTypography)
+        saveTypographies()
+    }
+    
+    func editCharacterSVGString(typographyName: String, character: String, newSVGString: String, newDrawing: PKDrawing?) {
+        guard let typographyIndex = myTypographies.createdTypographies.firstIndex(where: { $0.name == typographyName }),
+              let characterIndex = myTypographies.createdTypographies[typographyIndex].characters.firstIndex(where: { $0.character == character }) else {
+            print("Typography or character not found")
+            return
+        }
+        
+        myTypographies.createdTypographies[typographyIndex].characters[characterIndex].svgString = newSVGString
+        myTypographies.createdTypographies[typographyIndex].characters[characterIndex].drawing = newDrawing
         saveTypographies()
     }
 }

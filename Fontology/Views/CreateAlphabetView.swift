@@ -19,6 +19,8 @@ struct CreateAlphabetView: View {
         "Z", "z",
         "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
     ]
+    
+    let myFont: Typography
 
     let letrasMaiusculas: [String] = [
         "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
@@ -61,82 +63,95 @@ struct CreateAlphabetView: View {
                         .foregroundStyle(.black)
                         .font(.title.weight(.bold))
                     Spacer()
-                    Menu {
-                        Button("Aa") {
-                            selectedOption = "Aa"
-                            selectedAlphabet = .complete
-                        }
-                        Button("AA") {
-                            selectedOption = "AA"
-                            selectedAlphabet = .uppercase
-                        }
-                        Button("aa") {
-                            selectedOption = "aa"
-                            selectedAlphabet = .lowercase
-                        }
-                    } label: {
-                        Text(selectedOption != nil ? selectedOption! : "Aa")
-                            .font(.title3.weight(.bold))
-                        Image(systemName: "chevron.up.chevron.down")
-                    }
-                    .padding()
-                    .menuStyle(CustomMenuStyle()) // Aplicando um estilo personalizado ao menu
-                    
-                    Button(action: {
-                        print("Ta funcionando ainda nao doidao")
-                    }, label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 5)
-                                .foregroundStyle(Color.ourLightGray)
-                            Text("Exportar TTF")
-                                .foregroundStyle(.black)
-                        }
-                        .frame(width: 127, height: 36)
-                        .padding(.trailing)
-                    })
-                    
+                    menuButton
+                    exportButton
                 }
                 .padding(.leading)
                 Spacer()
                 ScrollView {
-                    LazyVGrid(columns: Array(repeating: GridItem(.fixed(itemSize), spacing: spacing), count: Int(itemsPerRow)), spacing: spacing) {
-                        ForEach(alphabetAndNumbers, id: \.self) { element in
-                            NavigationLink(destination: TestDrawingView(character: element)) {
-                                ZStack {
-                                    ZStack {
-                                        Rectangle()
-                                            .foregroundStyle(Color.ourLightGray) // Cor do quadrado
-                                            .font(.headline)
-                                        VStack {
-                                            ZStack {
-                                                Rectangle()
-                                                    .foregroundStyle(Color.ourGray)
-                                                    .frame(height: 32)
-                                                Text(element)
-                                                    .foregroundStyle(.white)
-                                                    .font(.title3.weight(.semibold))
-                                            }
-                                            Spacer()
-                                        }
-                                    }
-                                    .frame(width: itemSize, height: itemSize)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    
-                                    Text(element)
-                                        .font(.system(size: itemSize - 70))
-                                        .foregroundStyle(Color.ourGray)
-                                        .padding(.top)
-                                }
-                            }
-                        }
-                    }
-                    .padding()
+                    charactersGrid
                 }
-//                .animation(.default)
                 Spacer()
             }
         }
 //        .navigationTitle(fontName)
+//        .navigationBarTitleDisplayMode(.large)
+    }
+    
+    var menuButton: some View {
+        Menu {
+            Button("Aa") {
+                selectedOption = "Aa"
+                selectedAlphabet = .complete
+            }
+            Button("AA") {
+                selectedOption = "AA"
+                selectedAlphabet = .uppercase
+            }
+            Button("aa") {
+                selectedOption = "aa"
+                selectedAlphabet = .lowercase
+            }
+        } label: {
+            Text(selectedOption != nil ? selectedOption! : "Aa")
+                .font(.title3.weight(.bold))
+            Image(systemName: "chevron.up.chevron.down")
+        }
+        .padding()
+        .menuStyle(CustomMenuStyle()) // Aplicando um estilo personalizado ao menu
+    }
+    
+    var exportButton: some View {
+        Button(action: {
+            print("Ta funcionando ainda nao doidao")
+        }, label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 5)
+                    .foregroundStyle(Color.ourLightGray)
+                Text("Exportar TTF")
+                    .foregroundStyle(.black)
+            }
+            .frame(width: 127, height: 36)
+            .padding(.trailing)
+        })
+    }
+    
+    var charactersGrid: some View {
+        LazyVGrid(columns: Array(repeating: GridItem(.fixed(itemSize), spacing: spacing), count: Int(itemsPerRow)), spacing: spacing) {
+            ForEach(alphabetAndNumbers, id: \.self) { element in
+//                self.users = self.users.filter { $0.icloudID == dao.userID?.recordName }
+                if let caractere = myFont.characters.filter({ $0.character == element }).first {
+                    NavigationLink(destination: TestDrawingView(character: element, typographyName: fontName, lastDrawing: caractere.drawing)) {
+                        ZStack {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundStyle(Color.ourLightGray) // Cor do quadrado
+                                    .font(.headline)
+                                VStack {
+                                    ZStack {
+                                        Rectangle()
+                                            .foregroundStyle(Color.ourGray)
+                                            .frame(height: 32)
+                                        Text(element)
+                                            .foregroundStyle(.white)
+                                            .font(.title3.weight(.semibold))
+                                    }
+                                    Spacer()
+                                }
+                            }
+                            .frame(width: itemSize, height: itemSize)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            
+                            Text(element)
+                                .font(.system(size: itemSize - 70))
+                                .foregroundStyle(Color.ourGray)
+                                .padding(.top)
+                        }
+                    }
+                }
+            }
+        }
+        .padding()
     }
 }
 
@@ -159,6 +174,6 @@ struct DetailView: View {
     }
 }
 
-#Preview {
-    CreateAlphabetView(fontName: "Arial")
-}
+//#Preview {
+//    CreateAlphabetView(fontName: "Arial", myFont: <#Typography#>)
+//}

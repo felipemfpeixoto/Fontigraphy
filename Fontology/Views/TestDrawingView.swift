@@ -5,6 +5,7 @@ import UIKit
 import PencilKit
 
 struct TestDrawingView: View {
+    @EnvironmentObject var typographyManager: TypographyManager
     
     @State private var canvas = PKCanvasView()
     @State var drawing: PKDrawing?
@@ -12,13 +13,12 @@ struct TestDrawingView: View {
     
     @State var svgString: String = ""
     let character: String
-    var fileName: String {
-        return "\(character).svg"
-    }
+    let typographyName: String
+    let lastDrawing: PKDrawing?
     
     var body: some View {
         NavigationStack {
-            DrawingViewTest(canvas: $canvas)
+            DrawingViewTest(canvas: $canvas, lastDrawing: lastDrawing)
                 .navigationTitle(character)
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(leading: saveSVGButton)
@@ -29,23 +29,8 @@ struct TestDrawingView: View {
         ZStack {
             Button(action: {
                 svgString = saveImage()
-                
-                // Get the documents directory URL
-                if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                    // Construct the file URL for the SVG file
-                    let fileURL = documentsDirectory.appendingPathComponent(fileName)
-                    
-                    // Attempt to write the SVG string into the file
-                    do {
-                        try svgString.write(to: fileURL, atomically: true, encoding: .utf8)
-                        print("SVG file saved successfully.")
-                        print(fileURL)
-                    } catch {
-                        print("Error saving SVG file: \(error)")
-                    }
-                }
-                
-                callAPIWithSVG()
+                typographyManager.editCharacterSVGString(typographyName: typographyName, character: character, newSVGString: svgString, newDrawing: drawing)
+//                callAPIWithSVG()
             }) {
                 Image(systemName: "square.and.arrow.down.fill")
                     .font(.title)
@@ -63,11 +48,6 @@ struct TestDrawingView: View {
         // Faz o request da API
         // sendRequest(svgObject: svgObjetct)
         return svg
-    }
-    
-    // Função chamada ao deixar a view, que atualiza o JSON local com o svg atualizado de acordo com as mudanças feitas no desenho
-    func atualizaJson() {
-        
     }
     
     // Função para enviar a solicitação da API
@@ -225,12 +205,18 @@ struct TestDrawingView: View {
         }
 }
 
+// Estudar como passar o desenho salvo feito anteriormente para traduzir
 struct DrawingViewTest: UIViewRepresentable {
     
     @Binding var canvas: PKCanvasView
     
+    let lastDrawing: PKDrawing?
+    
     func makeUIView(context: Context) -> PKCanvasView {
         canvas.drawingPolicy = .anyInput
+        if lastDrawing != nil {
+            canvas.drawing = lastDrawing!
+        }
         return canvas
     }
     
@@ -240,5 +226,5 @@ struct DrawingViewTest: UIViewRepresentable {
 }
 
 #Preview {
-    TestDrawingView(character: "A")
+    TestDrawingView(character: "A", typographyName: "Mengo", lastDrawing: nil)
 }
