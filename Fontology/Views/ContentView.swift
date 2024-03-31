@@ -86,6 +86,27 @@ struct ContentView: View {
                             .foregroundStyle(Color.white)
                             .frame(width: 387, height: 387)
                             .shadow(color: .black.opacity(0.3), radius: 7.5, y: 5)
+                        HStack {
+                            if typography.uppercaseDrawing != nil {
+                                Image(uiImage: UIImage(data: typography.uppercaseDrawing!)!)
+                                    .resizable()
+                                    .frame(width: 150, height: 150)
+                                    
+                            } else {
+                                Text("A")
+                                    .foregroundStyle(Color.ourLightGray)
+                                    .font(.system(size: 250))
+                            }
+                            if typography.lowercaseDrawing != nil {
+                                Image(uiImage: UIImage(data: typography.lowercaseDrawing!)!)
+                                    .resizable()
+                                    .frame(width: 150, height: 150)
+                            } else {
+                                Text("a")
+                                    .foregroundStyle(Color.ourLightGray)
+                                    .font(.system(size: 250))
+                            }
+                        }
                         VStack {
                             Spacer()
                             ZStack {

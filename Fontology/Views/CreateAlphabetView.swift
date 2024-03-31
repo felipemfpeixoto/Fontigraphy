@@ -1,4 +1,5 @@
 import SwiftUI
+import CodableExtensions
 
 enum SelectedAlphabet {
     case complete
@@ -55,18 +56,33 @@ struct CreateAlphabetView: View {
     
     @State var selectedOption: String? = nil
     
+    @State var isLoadingTTF: Bool = false
+    
+    @State var isPresenting: Bool = false
+    
+    var documentsDirectory: URL {
+            FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        }
+    
+    var fileName: String {
+        "\(fontName).ttf"
+    }
+    
+    @State var fileExists: Bool = false
+    
     var body: some View {
         ZStack {
             VStack {
                 HStack {
                     Text(fontName)
                         .foregroundStyle(.black)
-                        .font(.title.weight(.bold))
+                        .font(.system(size: 48).weight(.bold))
                     Spacer()
                     menuButton
                     exportButton
                 }
-                .padding(.leading)
+                .padding(.horizontal, 48)
+                .background(.white)
                 Spacer()
                 ScrollView {
                     charactersGrid
@@ -74,8 +90,23 @@ struct CreateAlphabetView: View {
                 Spacer()
             }
         }
-//        .navigationTitle(fontName)
-//        .navigationBarTitleDisplayMode(.large)
+        .task {
+            let filePath = documentsDirectory.appendingPathComponent(fileName).path
+            let exists = FileManager.default.fileExists(atPath: filePath)
+            if exists {
+                fileExists = true
+            }
+        }
+        .background{
+            Image("alphabetBackground")
+                .ignoresSafeArea()
+                .padding(.top, UIScreen.main.bounds.height)
+        }
+        .fullScreenCover(isPresented: $isPresenting, content: {
+//            ExportingSheet(isPresenting: $isPresenting, isLoading: $isLoadingTTF, fileName: fileName)
+            ExportView(isPresenting: $isPresenting, isLoading: $isLoadingTTF, typography: myFont, fileName: fileName)
+        })
+        
     }
     
     var menuButton: some View {
@@ -103,11 +134,13 @@ struct CreateAlphabetView: View {
     
     var exportButton: some View {
         Button(action: {
-            print("Ta funcionando ainda nao doidao")
+            isPresenting = true
+            isLoadingTTF = true
+            callAPIWithTypography()
         }, label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 5)
-                    .foregroundStyle(Color.ourLightGray)
+                    .foregroundStyle(Color.yellow)
                 Text("Exportar TTF")
                     .foregroundStyle(.black)
             }
@@ -119,39 +152,114 @@ struct CreateAlphabetView: View {
     var charactersGrid: some View {
         LazyVGrid(columns: Array(repeating: GridItem(.fixed(itemSize), spacing: spacing), count: Int(itemsPerRow)), spacing: spacing) {
             ForEach(alphabetAndNumbers, id: \.self) { element in
-//                self.users = self.users.filter { $0.icloudID == dao.userID?.recordName }
                 if let caractere = myFont.characters.filter({ $0.character == element }).first {
-                    NavigationLink(destination: TestDrawingView(character: element, typographyName: fontName, lastDrawing: caractere.drawing)) {
+//                    NavigationLink(destination: TestDrawingView(character: element, typographyName: fontName, lastDrawing: caractere.drawing)) {
+                    NavigationLink(destination: DrawingView(character: element, typographyName: fontName, lastDrawing: caractere.drawing)) {
                         ZStack {
                             ZStack {
-                                Rectangle()
-                                    .foregroundStyle(Color.ourLightGray) // Cor do quadrado
-                                    .font(.headline)
-                                VStack {
-                                    ZStack {
-                                        Rectangle()
-                                            .foregroundStyle(Color.ourGray)
-                                            .frame(height: 32)
-                                        Text(element)
-                                            .foregroundStyle(.white)
-                                            .font(.title3.weight(.semibold))
+                                if caractere.pngDrawing != nil {
+                                    Rectangle()
+                                        .foregroundStyle(Color.white) // Cor do quadrado
+                                        .font(.headline)
+                                    Image(uiImage: UIImage(data: caractere.pngDrawing!)!)
+                                        .resizable()
+                                        .frame(width: itemSize/2, height: itemSize/2)
+                                        .aspectRatio(contentMode: .fit)
+                                    VStack {
+                                        ZStack {
+                                            Rectangle()
+                                                .foregroundStyle(Color.yellow)
+                                                .frame(height: 32)
+                                            Text(element)
+                                                .foregroundStyle(.black)
+                                                .font(.title3.weight(.semibold))
+                                        }
+                                        Spacer()
                                     }
-                                    Spacer()
+                                } else {
+                                    Rectangle()
+                                        .foregroundStyle(Color.ourLightGray)
+                                        .font(.headline)
+                                    VStack {
+                                        ZStack {
+                                            Rectangle()
+                                                .foregroundStyle(Color.yellow)
+                                                .frame(height: 32)
+                                            Text(element)
+                                                .foregroundStyle(.black)
+                                                .font(.title3.weight(.semibold))
+                                        }
+                                        Spacer()
+                                    }
                                 }
                             }
                             .frame(width: itemSize, height: itemSize)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .shadow(color: .black.opacity(0.3), radius: 7.5, y: 2)
                             
-                            Text(element)
-                                .font(.system(size: itemSize - 70))
-                                .foregroundStyle(Color.ourGray)
-                                .padding(.top)
+                            if caractere.pngDrawing == nil {
+                                Text(element)
+                                    .font(.system(size: itemSize - 70))
+                                    .foregroundStyle(Color.ourGray)
+                                    .padding(.top)
+                            }
                         }
                     }
                 }
             }
         }
         .padding()
+    }
+    
+    // Função para fazer a solicitação da API com a tipografia serializada como JSON
+    func callAPIWithTypography() {
+        print("callAPIWithTypography")
+        
+        // Call para o lab
+//        guard let url = URL(string: "http://10.46.40.6:5001/convert") else {
+//            print("Invalid URL")
+//            return
+//        }
+        
+        // Call para testes em casa -> http://127.0.0.1:5001
+        guard let url = URL(string: "http://127.0.0.1:5001/convert") else {
+            print("Invalid URL")
+            return
+        }
+        
+        guard let data = myFont.asDictionary?.asData else {
+            fatalError("Si fudeu")
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = data
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            // Step 2: Receive response from API
+            if let data = data {
+                // Step 3: Handle the response data
+                // Handle the received data as per your requirement
+                saveTTFFromData(data)
+            }
+        }.resume()
+    }
+    
+    func saveTTFFromData(_ data: Data) {
+        // Save the received .ttf file to the device's file system
+        // For example, you can save it in the Documents directory
+        if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let fileURL = documentsDirectory.appendingPathComponent("\(myFont.name).ttf")
+            do {
+                try data.write(to: fileURL)
+                print("TTF file saved successfully.")
+                fileExists = true
+                isLoadingTTF = false
+                print(fileURL)
+            } catch {
+                print("Error saving TTF file: \(error)")
+            }
+        }
     }
 }
 
@@ -160,20 +268,61 @@ struct CustomMenuStyle: MenuStyle {
         Menu(configuration)
             .foregroundColor(.black) // Definindo a cor do texto do botão
             .frame(width: 66, height: 36)
-            .background(Color.ourLightGray) // Definindo a cor de fundo do botão
-            .clipShape(RoundedRectangle(cornerRadius: 3))
+            .background(Color.yellow) // Definindo a cor de fundo do botão
+            .clipShape(RoundedRectangle(cornerRadius: 100))
     }
 }
 
-struct DetailView: View {
-    var item: String
+struct ExportingSheet: View {
+    
+    @Binding var isPresenting: Bool
+    
+    @Binding var isLoading: Bool
+    
+    var documentsDirectory: URL {
+            FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        }
+    
+    let fileName: String
     
     var body: some View {
-        Text("Detalhes do item \(item)")
-            .navigationTitle("Item \(item)")
+        ZStack {
+            Color.gray
+                .ignoresSafeArea()
+            VStack {
+                if isLoading {
+                    ProgressView()
+                        .controlSize(.extraLarge)
+                } else {
+                    HStack {
+                        Button(action: {
+                            isPresenting = false
+                        }, label: {
+                            Image(systemName: "x.circle")
+                                .foregroundStyle(.white)
+                                .font(.system(size: 50))
+                        })
+                        .padding(30)
+                        Spacer()
+                    }
+                    Spacer()
+                    ShareLink(item: documentsDirectory.appendingPathComponent(fileName)) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 100)
+                                .frame(width: 140, height: 70)
+                                .foregroundStyle(.yellow)
+                            Image(systemName: "square.and.arrow.up")
+                                .foregroundStyle(Color.black)
+                                .font(.system(size: 50))
+                        }
+                    }
+                    Spacer()
+                }
+            }
+        }
     }
 }
 
-//#Preview {
-//    CreateAlphabetView(fontName: "Arial", myFont: <#Typography#>)
-//}
+#Preview {
+    CreateAlphabetView(myFont: Typography(name: "Mengo", characters: []), fontName: "Arial")
+}

@@ -17,6 +17,8 @@
 		0F9459D52BB0E32800FB96BA /* CreateAlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D42BB0E32800FB96BA /* CreateAlphabetView.swift */; };
 		0F9459D72BB0E34000FB96BA /* AddTypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D62BB0E34000FB96BA /* AddTypographyView.swift */; };
 		0F9459D92BB18B2400FB96BA /* TestDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D82BB18B2400FB96BA /* TestDrawingView.swift */; };
+		0F9459DE2BB1EE3000FB96BA /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0F9459DD2BB1EE3000FB96BA /* CodableExtensions */; };
+		0F9459E02BB7965F00FB96BA /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459DF2BB7965F00FB96BA /* ExportView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,7 @@
 		0F9459D42BB0E32800FB96BA /* CreateAlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAlphabetView.swift; sourceTree = "<group>"; };
 		0F9459D62BB0E34000FB96BA /* AddTypographyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTypographyView.swift; sourceTree = "<group>"; };
 		0F9459D82BB18B2400FB96BA /* TestDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDrawingView.swift; sourceTree = "<group>"; };
+		0F9459DF2BB7965F00FB96BA /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F9459DE2BB1EE3000FB96BA /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +101,7 @@
 				0F9459D82BB18B2400FB96BA /* TestDrawingView.swift */,
 				0F9459D42BB0E32800FB96BA /* CreateAlphabetView.swift */,
 				0F9459D62BB0E34000FB96BA /* AddTypographyView.swift */,
+				0F9459DF2BB7965F00FB96BA /* ExportView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -125,6 +130,9 @@
 			dependencies = (
 			);
 			name = Fontology;
+			packageProductDependencies = (
+				0F9459DD2BB1EE3000FB96BA /* CodableExtensions */,
+			);
 			productName = Fontology;
 			productReference = 0F9459B82BB0E20200FB96BA /* Fontology.app */;
 			productType = "com.apple.product-type.application";
@@ -153,6 +161,9 @@
 				Base,
 			);
 			mainGroup = 0F9459AF2BB0E20200FB96BA;
+			packageReferences = (
+				0F9459DC2BB1EE3000FB96BA /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+			);
 			productRefGroup = 0F9459B92BB0E20200FB96BA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -184,6 +195,7 @@
 				0F9459BE2BB0E20200FB96BA /* ContentView.swift in Sources */,
 				0F9459D32BB0E31A00FB96BA /* DrawingView.swift in Sources */,
 				0F9459D72BB0E34000FB96BA /* AddTypographyView.swift in Sources */,
+				0F9459E02BB7965F00FB96BA /* ExportView.swift in Sources */,
 				0F9459BC2BB0E20200FB96BA /* FontologyApp.swift in Sources */,
 				0F9459D12BB0E2EF00FB96BA /* Models.swift in Sources */,
 				0F9459D92BB18B2400FB96BA /* TestDrawingView.swift in Sources */,
@@ -392,6 +404,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0F9459DC2BB1EE3000FB96BA /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0F9459DD2BB1EE3000FB96BA /* CodableExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F9459DC2BB1EE3000FB96BA /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			productName = CodableExtensions;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0F9459B02BB0E20200FB96BA /* Project object */;
 }

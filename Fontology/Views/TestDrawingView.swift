@@ -18,7 +18,10 @@ struct TestDrawingView: View {
     
     var body: some View {
         NavigationStack {
-            DrawingViewTest(canvas: $canvas, lastDrawing: lastDrawing)
+            
+            DrawingViewTest2(canvas: $canvas, lastDrawing: lastDrawing)
+                .frame(width: 150, height: 150)
+                .border(.black)
                 .navigationTitle(character)
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(leading: saveSVGButton)
@@ -29,13 +32,23 @@ struct TestDrawingView: View {
         ZStack {
             Button(action: {
                 svgString = saveImage()
-                typographyManager.editCharacterSVGString(typographyName: typographyName, character: character, newSVGString: svgString, newDrawing: drawing)
+                let pngData = getPngData()
+                typographyManager.editCharacterSVGString(typographyName: typographyName, character: character, newSVGString: svgString, newDrawing: drawing, pngDrawing: pngData)
 //                callAPIWithSVG()
             }) {
                 Image(systemName: "square.and.arrow.down.fill")
                     .font(.title)
             }
         }
+    }
+    
+    func getPngData() -> Data? {
+        let drawingImage = drawing?.image(from: canvas.drawing.bounds, scale: 1.0)
+        guard let pngData = drawingImage!.pngData() else {
+            print("Failed to convert image to PNG Data")
+            return nil
+        }
+        return pngData
     }
     
     func saveImage() -> String {
@@ -112,7 +125,7 @@ struct TestDrawingView: View {
     func pathsToSVG(_ path: CGPath) -> String {
         svgString = "<svg width=\"300\" height=\"300\" xmlns=\"http://www.w3.org/2000/svg\">\n"
         
-        svgString += "<path d=\"\(pathToSVGPathData(path))\" style=\"fill:none;stroke:black;stroke-width:2\" />\n"
+        svgString += "<path d=\"\(pathToSVGPathData(path))\" style=\"fill:none;stroke:black;stroke-width:20\" />\n"
         
         svgString += "</svg>"
         
@@ -168,41 +181,6 @@ struct TestDrawingView: View {
         
         return path
     }
-    
-    func callAPIWithSVG() {
-        print("callAPIWithSVG")
-        // Assuming you have an API request function, replace the URL and parameters accordingly
-        let apiURL = URL(string: "https://example.com/api")!
-        let svgData = svgString
-        print(svgData)
-        
-//        var request = URLRequest(url: apiURL)
-//        request.httpMethod = "POST"
-//        request.setValue("application/svg+xml", forHTTPHeaderField: "Content-Type")
-//        request.httpBody = svgData
-//
-//        URLSession.shared.dataTask(with: request) { data, response, error in
-//            // Step 2: Receive response from API
-//            if let data = data {
-//                // Step 3: Save received .ttf file to device's file system
-//                saveTTFFromData(data)
-//            }
-//        }.resume()
-    }
-    
-    func saveTTFFromData(_ data: Data) {
-            // Save the received .ttf file to the device's file system
-            // For example, you can save it in the Documents directory
-            if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                let fileURL = documentsDirectory.appendingPathComponent("example.ttf")
-                do {
-                    try data.write(to: fileURL)
-                    print("TTF file saved successfully.")
-                } catch {
-                    print("Error saving TTF file: \(error)")
-                }
-            }
-        }
 }
 
 // Estudar como passar o desenho salvo feito anteriormente para traduzir
@@ -223,6 +201,34 @@ struct DrawingViewTest: UIViewRepresentable {
     func updateUIView(_ uiView: PKCanvasView, context: Context) {
         print("Mengo")
     }
+}
+
+// Estudar como passar o desenho salvo feito anteriormente para traduzir
+struct DrawingViewTest2: UIViewControllerRepresentable {
+    
+    @Binding var canvas: PKCanvasView
+    
+    let lastDrawing: PKDrawing?
+    
+    func makeUIViewController(context: Context) -> UIViewController {
+        let vc = UIViewController()
+        self.canvas.translatesAutoresizingMaskIntoConstraints = false
+        vc.view.addSubview(canvas)
+        canvas.widthAnchor.constraint(equalTo: vc.view.widthAnchor).isActive = true
+        canvas.heightAnchor.constraint(equalTo: vc.view.heightAnchor).isActive = true
+        canvas.drawingPolicy = .anyInput
+        if lastDrawing != nil {
+            canvas.drawing = lastDrawing!
+        }
+        return vc
+    }
+    
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        ()
+    }
+    
+    
 }
 
 #Preview {

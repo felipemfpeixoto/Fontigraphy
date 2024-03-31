@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "codableextensions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rvenieris/CodableExtensions.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "8ab633e156c5b4e21ca0adcbe942ab78754c78cc"
+      }
+    }
+  ],
+  "version" : 2
+}
