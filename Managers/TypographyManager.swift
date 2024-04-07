@@ -82,4 +82,25 @@ class TypographyManager: ObservableObject {
         
         saveTypographies()
     }
+    
+    func editMasterCharacter(typographyName: String, pngDrawing: Data?, characterName: String) {
+        guard let typographyIndex = myTypographies.createdTypographies.firstIndex(where: { $0.name == typographyName }) else {
+            print("Typography or character not found")
+            return
+        }
+        myTypographies.createdTypographies[typographyIndex].master = pngDrawing
+        myTypographies.createdTypographies[typographyIndex].masterName = characterName
+        
+        saveTypographies()
+    }
+    
+    func deleteTypography(name: String) {
+        guard let index = myTypographies.createdTypographies.firstIndex(where: { $0.name == name }) else {
+            print("Typography not found")
+            return
+        }
+        
+        myTypographies.createdTypographies.remove(at: index)
+        saveTypographies()
+    }
 }

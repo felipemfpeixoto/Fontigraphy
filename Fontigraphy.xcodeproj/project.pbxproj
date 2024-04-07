@@ -1,0 +1,475 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F9459BC2BB0E20200FB96BA /* FontologyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459BB2BB0E20200FB96BA /* FontologyApp.swift */; };
+		0F9459BE2BB0E20200FB96BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459BD2BB0E20200FB96BA /* ContentView.swift */; };
+		0F9459C02BB0E20300FB96BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F9459BF2BB0E20300FB96BA /* Assets.xcassets */; };
+		0F9459C32BB0E20300FB96BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F9459C22BB0E20300FB96BA /* Preview Assets.xcassets */; };
+		0F9459CC2BB0E2C800FB96BA /* TypographyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459CB2BB0E2C800FB96BA /* TypographyManager.swift */; };
+		0F9459D12BB0E2EF00FB96BA /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D02BB0E2EF00FB96BA /* Models.swift */; };
+		0F9459D32BB0E31A00FB96BA /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D22BB0E31A00FB96BA /* DrawingView.swift */; };
+		0F9459D52BB0E32800FB96BA /* CreateAlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D42BB0E32800FB96BA /* CreateAlphabetView.swift */; };
+		0F9459D72BB0E34000FB96BA /* AddTypographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D62BB0E34000FB96BA /* AddTypographyView.swift */; };
+		0F9459D92BB18B2400FB96BA /* TestDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459D82BB18B2400FB96BA /* TestDrawingView.swift */; };
+		0F9459DE2BB1EE3000FB96BA /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0F9459DD2BB1EE3000FB96BA /* CodableExtensions */; };
+		0F9459E02BB7965F00FB96BA /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9459DF2BB7965F00FB96BA /* ExportView.swift */; };
+		0FEE555B2BBC4C7F00DEF60C /* TypographiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE555A2BBC4C7F00DEF60C /* TypographiesView.swift */; };
+		0FEE555D2BBC4F1F00DEF60C /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE555C2BBC4F1F00DEF60C /* TutorialView.swift */; };
+		0FEE55602BBDD00C00DEF60C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEE555F2BBDD00C00DEF60C /* Lottie */; };
+		0FEE55622BBDD04E00DEF60C /* Composio 1.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FEE55612BBDD04E00DEF60C /* Composio 1.json */; };
+		0FEE557F2BBF23BB00DEF60C /* ToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE557E2BBF23BB00DEF60C /* ToggleStyle.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0F9459B82BB0E20200FB96BA /* Fontigraphy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fontigraphy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F9459BB2BB0E20200FB96BA /* FontologyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontologyApp.swift; sourceTree = "<group>"; };
+		0F9459BD2BB0E20200FB96BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0F9459BF2BB0E20300FB96BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0F9459C22BB0E20300FB96BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0F9459CB2BB0E2C800FB96BA /* TypographyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypographyManager.swift; sourceTree = "<group>"; };
+		0F9459D02BB0E2EF00FB96BA /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		0F9459D22BB0E31A00FB96BA /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		0F9459D42BB0E32800FB96BA /* CreateAlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAlphabetView.swift; sourceTree = "<group>"; };
+		0F9459D62BB0E34000FB96BA /* AddTypographyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTypographyView.swift; sourceTree = "<group>"; };
+		0F9459D82BB18B2400FB96BA /* TestDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDrawingView.swift; sourceTree = "<group>"; };
+		0F9459DF2BB7965F00FB96BA /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
+		0FA57A6B2BC055E900EA9D99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0FEE555A2BBC4C7F00DEF60C /* TypographiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypographiesView.swift; sourceTree = "<group>"; };
+		0FEE555C2BBC4F1F00DEF60C /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		0FEE55612BBDD04E00DEF60C /* Composio 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Composio 1.json"; sourceTree = "<group>"; };
+		0FEE557E2BBF23BB00DEF60C /* ToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleStyle.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0F9459B52BB0E20200FB96BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F9459DE2BB1EE3000FB96BA /* CodableExtensions in Frameworks */,
+				0FEE55602BBDD00C00DEF60C /* Lottie in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F9459AF2BB0E20200FB96BA = {
+			isa = PBXGroup;
+			children = (
+				0F9459CA2BB0E2BE00FB96BA /* Managers */,
+				0F9459BA2BB0E20200FB96BA /* Fontigraphy */,
+				0F9459B92BB0E20200FB96BA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0F9459B92BB0E20200FB96BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0F9459B82BB0E20200FB96BA /* Fontigraphy.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0F9459BA2BB0E20200FB96BA /* Fontigraphy */ = {
+			isa = PBXGroup;
+			children = (
+				0FA57A6B2BC055E900EA9D99 /* Info.plist */,
+				0FEE55632BBDD05500DEF60C /* Data */,
+				0F9459CE2BB0E2E200FB96BA /* Models */,
+				0F9459CD2BB0E2DA00FB96BA /* Views */,
+				0F9459BB2BB0E20200FB96BA /* FontologyApp.swift */,
+				0F9459BF2BB0E20300FB96BA /* Assets.xcassets */,
+				0F9459C12BB0E20300FB96BA /* Preview Content */,
+			);
+			path = Fontigraphy;
+			sourceTree = "<group>";
+		};
+		0F9459C12BB0E20300FB96BA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0F9459C22BB0E20300FB96BA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0F9459CA2BB0E2BE00FB96BA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0F9459CB2BB0E2C800FB96BA /* TypographyManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		0F9459CD2BB0E2DA00FB96BA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0F9459BD2BB0E20200FB96BA /* ContentView.swift */,
+				0F9459D22BB0E31A00FB96BA /* DrawingView.swift */,
+				0F9459D82BB18B2400FB96BA /* TestDrawingView.swift */,
+				0F9459D42BB0E32800FB96BA /* CreateAlphabetView.swift */,
+				0F9459D62BB0E34000FB96BA /* AddTypographyView.swift */,
+				0F9459DF2BB7965F00FB96BA /* ExportView.swift */,
+				0FEE555A2BBC4C7F00DEF60C /* TypographiesView.swift */,
+				0FEE555C2BBC4F1F00DEF60C /* TutorialView.swift */,
+				0FEE557E2BBF23BB00DEF60C /* ToggleStyle.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0F9459CE2BB0E2E200FB96BA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F9459D02BB0E2EF00FB96BA /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0FEE55632BBDD05500DEF60C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0FEE55612BBDD04E00DEF60C /* Composio 1.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0F9459B72BB0E20200FB96BA /* Fontigraphy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F9459C62BB0E20300FB96BA /* Build configuration list for PBXNativeTarget "Fontigraphy" */;
+			buildPhases = (
+				0F9459B42BB0E20200FB96BA /* Sources */,
+				0F9459B52BB0E20200FB96BA /* Frameworks */,
+				0F9459B62BB0E20200FB96BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fontigraphy;
+			packageProductDependencies = (
+				0F9459DD2BB1EE3000FB96BA /* CodableExtensions */,
+				0FEE555F2BBDD00C00DEF60C /* Lottie */,
+			);
+			productName = Fontology;
+			productReference = 0F9459B82BB0E20200FB96BA /* Fontigraphy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0F9459B02BB0E20200FB96BA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					0F9459B72BB0E20200FB96BA = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 0F9459B32BB0E20200FB96BA /* Build configuration list for PBXProject "Fontigraphy" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0F9459AF2BB0E20200FB96BA;
+			packageReferences = (
+				0F9459DC2BB1EE3000FB96BA /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				0FEE555E2BBDD00C00DEF60C /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
+			productRefGroup = 0F9459B92BB0E20200FB96BA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0F9459B72BB0E20200FB96BA /* Fontigraphy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0F9459B62BB0E20200FB96BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F9459C32BB0E20300FB96BA /* Preview Assets.xcassets in Resources */,
+				0F9459C02BB0E20300FB96BA /* Assets.xcassets in Resources */,
+				0FEE55622BBDD04E00DEF60C /* Composio 1.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0F9459B42BB0E20200FB96BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F9459CC2BB0E2C800FB96BA /* TypographyManager.swift in Sources */,
+				0F9459D52BB0E32800FB96BA /* CreateAlphabetView.swift in Sources */,
+				0F9459BE2BB0E20200FB96BA /* ContentView.swift in Sources */,
+				0F9459D32BB0E31A00FB96BA /* DrawingView.swift in Sources */,
+				0F9459D72BB0E34000FB96BA /* AddTypographyView.swift in Sources */,
+				0FEE555B2BBC4C7F00DEF60C /* TypographiesView.swift in Sources */,
+				0F9459E02BB7965F00FB96BA /* ExportView.swift in Sources */,
+				0FEE557F2BBF23BB00DEF60C /* ToggleStyle.swift in Sources */,
+				0FEE555D2BBC4F1F00DEF60C /* TutorialView.swift in Sources */,
+				0F9459BC2BB0E20200FB96BA /* FontologyApp.swift in Sources */,
+				0F9459D12BB0E2EF00FB96BA /* Models.swift in Sources */,
+				0F9459D92BB18B2400FB96BA /* TestDrawingView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0F9459C42BB0E20300FB96BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0F9459C52BB0E20300FB96BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0F9459C72BB0E20300FB96BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fontigraphy/Preview Content\"";
+				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Fontigraphy/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Academy.Fontology;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0F9459C82BB0E20300FB96BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fontigraphy/Preview Content\"";
+				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Fontigraphy/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Academy.Fontology;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0F9459B32BB0E20200FB96BA /* Build configuration list for PBXProject "Fontigraphy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F9459C42BB0E20300FB96BA /* Debug */,
+				0F9459C52BB0E20300FB96BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F9459C62BB0E20300FB96BA /* Build configuration list for PBXNativeTarget "Fontigraphy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F9459C72BB0E20300FB96BA /* Debug */,
+				0F9459C82BB0E20300FB96BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0F9459DC2BB1EE3000FB96BA /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		0FEE555E2BBDD00C00DEF60C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0F9459DD2BB1EE3000FB96BA /* CodableExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F9459DC2BB1EE3000FB96BA /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			productName = CodableExtensions;
+		};
+		0FEE555F2BBDD00C00DEF60C /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FEE555E2BBDD00C00DEF60C /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 0F9459B02BB0E20200FB96BA /* Project object */;
+}
