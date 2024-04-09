@@ -15,6 +15,8 @@ struct TypographiesView: View {
     
     @State var showingActionSheet = false
     
+    @State var selectedFont: Typography = Typography(name: "", characters: [])
+    
     var body: some View {
         ZStack {
             Color.white
@@ -93,65 +95,67 @@ struct TypographiesView: View {
     
     var forEachTypographies: some View {
         ForEach(typographyManager.myTypographies.createdTypographies, id: \.name) { typography in
-            ZStack {
-                NavigationLink(destination: CreateAlphabetView(myFont: typography, fontName: typography.name)) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 13)
-                            .foregroundStyle(Color.white)
-                            .frame(width: 387, height: 387)
-                            .shadow(color: .black.opacity(0.3), radius: 7.5, y: 5)
-                        HStack {
-                            if typography.uppercaseDrawing != nil {
-                                Image(uiImage: UIImage(data: typography.uppercaseDrawing!)!)
-                                    .resizable()
-                                    .frame(width: 150, height: 150)
-                                    
-                            } else {
-                                Text("A")
-                                    .foregroundStyle(Color.ourLightGray)
-                                    .font(.system(size: 250))
-                            }
-                            if typography.lowercaseDrawing != nil {
-                                Image(uiImage: UIImage(data: typography.lowercaseDrawing!)!)
-                                    .resizable()
-                                    .frame(width: 150, height: 150)
-                            } else {
-                                Text("a")
-                                    .foregroundStyle(Color.ourLightGray)
-                                    .font(.system(size: 250))
-                            }
-                        }
-                        VStack {
-                            Spacer()
-                            ZStack {
-                                Text(typography.name)
-                                    .font(.title2)
-                                    .foregroundStyle(.black)
-                                    .padding()
-                            }
-                        }
-                    }
-                }
-                optionsButton
-            }
-            .frame(width: 387, height: 387)
-            .alert("Are you sure you want to delete the \(typography.name) typography?", isPresented: $showingActionSheet, actions: {
-                Button(role: .destructive) {
-                    typographyManager.deleteTypography(name: typography.name)
-                } label: {
-                    Text("Delete")
-                }
-            })
+            element(for: typography)
         }
     }
     
-    var optionsButton: some View {
+    
+    func element(for typography: Typography) -> some View {
+        ZStack {
+            NavigationLink(destination: CreateAlphabetView(myFont: typography, fontName: typography.name)) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 13)
+                        .foregroundStyle(Color.white)
+                        .frame(width: 387, height: 387)
+                        .shadow(color: .black.opacity(0.3), radius: 7.5, y: 5)
+                    HStack {
+                        if typography.uppercaseDrawing != nil {
+                            Image(uiImage: UIImage(data: typography.uppercaseDrawing!)!)
+                                .resizable()
+                                .frame(width: 150, height: 150)
+                                
+                        } else {
+                            Text("A")
+                                .foregroundStyle(Color.ourLightGray)
+                                .font(.system(size: 250))
+                        }
+                        if typography.lowercaseDrawing != nil {
+                            Image(uiImage: UIImage(data: typography.lowercaseDrawing!)!)
+                                .resizable()
+                                .frame(width: 150, height: 150)
+                        } else {
+                            Text("a")
+                                .foregroundStyle(Color.ourLightGray)
+                                .font(.system(size: 250))
+                        }
+                    }
+                    VStack {
+                        Spacer()
+                        ZStack {
+                            Text(typography.name)
+                                .font(.title2)
+                                .foregroundStyle(.black)
+                                .padding()
+                        }
+                    }
+                }
+            }
+            optionButton(for: typography)
+            // esta dando erro, passando o nome que quer para a função
+            
+        }
+        .frame(width: 387, height: 387)
+    }
+    
+    func optionButton(for typography: Typography) -> some View {
         VStack {
             HStack {
                 Spacer()
                 Menu {
                     Button(role: .destructive) {
+                        selectedFont = typography
                         showingActionSheet = true
+//                        print(typography.name)
                     } label: {
                         Text("Delete")
                     }
@@ -170,7 +174,13 @@ struct TypographiesView: View {
                 .padding(30)
             }
             Spacer()
-        }
+        }.alert("Are you sure you want to delete the \(selectedFont.name) typography?", isPresented: $showingActionSheet, actions: {
+            Button(role: .destructive) {
+                typographyManager.deleteTypography(name: selectedFont.name)
+            } label: {
+                Text("Delete")
+            }
+        })
     }
 }
 

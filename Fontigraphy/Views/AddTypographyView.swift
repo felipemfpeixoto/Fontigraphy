@@ -20,14 +20,14 @@ struct AddTypographyView: View {
                 Spacer()
             
                 Text("Create new typography")
-                    .font(.system(size: 32).weight(.bold))
+                    .font(.system(.largeTitle).weight(.bold))
                     
                 Spacer()
                 TextField("  Name your font...", text: $typographyName)
                     .foregroundStyle(.black)
                     .background(.white)
                     .border(Color.ourLightGray, width: 1)
-                    .font(.system(size: 25))
+                    .font(.system(.title))
                     .padding(.horizontal, 50)
                 Spacer()
                 HStack {
@@ -59,7 +59,7 @@ struct AddTypographyView: View {
                                 .foregroundStyle(Color.begeDeCria)
                             Text("Create")
                                 .foregroundStyle(.black)
-                                .font(.system(size: 20).weight(.semibold))
+                                .font(.system(.title2).weight(.semibold))
                         }
                         .padding(-5)
                     }

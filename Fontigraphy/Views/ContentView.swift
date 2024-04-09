@@ -22,8 +22,8 @@ struct ContentView: View {
                     .padding(.bottom)
                        
                 } else {
-//                    TutorialView()
-                    TypographiesView()
+                    TutorialView()
+//                    TypographiesView()
                 }
             }
         }

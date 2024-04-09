@@ -22,14 +22,14 @@ struct TutorialView: View {
                 .ignoresSafeArea()
             if isShowingFirst {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundStyle(.white)
                     VStack {
                         Spacer()
-                        Text("Fontigraphy is an application that allows users to create their own fonts from their personal handwriting")
-                            .font(.custom("Arial", size: 20))
-                            .padding(.horizontal, 30)
-                            .padding(.top)
+                        ScrollView {
+                            Text("Fontigraphy is an application that allows users to create their own fonts from their personal handwriting")
+                                .font(Font.title)
+                                .padding(.horizontal, 30)
+                                .padding(.top)
+                        }
                         Spacer()
                         HStack {
                             Spacer()
@@ -41,13 +41,18 @@ struct TutorialView: View {
                                 }
                             } label: {
                                 Text("Continue")
+                                    .font(.headline)
                                     .bold()
                             }
                         }
                         .padding()
                     }
+                    .frame(width: 500, height: 250)
                 }
-                .frame(width: 420, height: 187)
+                .background {
+                    RoundedRectangle(cornerRadius: 13)
+                        .foregroundStyle(.white)
+                }
                 .offset(x: 200, y: 200)
             }
             if isShowingSecond {
@@ -56,10 +61,12 @@ struct TutorialView: View {
                         .foregroundStyle(.white)
                     VStack {
                         Spacer()
-                        Text("Using your finger or an Apple Pencil with the editing tools, you can share the fonts you've created for a variety of digital projects")
-                            .font(.custom("Arial", size: 22))
-                            .padding(.horizontal, 30)
-                            .padding(.top)
+                        ScrollView {
+                            Text("Using your finger or an Apple Pencil with the editing tools, you can share the fonts you've created for a variety of digital projects")
+                                .font(.title)
+                                .padding(.horizontal, 30)
+                                .padding(.top)
+                        }
                         Spacer()
                         HStack {
                             Spacer()
@@ -71,8 +78,8 @@ struct TutorialView: View {
                         .padding()
                     }
                 }
-                .frame(width: 420, height: 218)
-                .offset(x: -200, y: -150)
+                .frame(width: 550, height: 250)
+                .offset(x: 200, y: 200)
             }
         }
         .navigationBarBackButtonHidden()

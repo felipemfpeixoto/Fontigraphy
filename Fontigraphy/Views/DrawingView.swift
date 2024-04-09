@@ -70,7 +70,7 @@ struct DrawingView: View {
                     Color.black.opacity(0.5)
                         .onTapGesture {
                             withAnimation(Animation.spring(duration: 0.5)) {
-                                isShowingPopovers.toggle()
+                                isShowingPopovers = false
                             }
                         }
                         .ignoresSafeArea()
@@ -122,7 +122,7 @@ struct DrawingView: View {
                                             }
                                         } label: {
                                             Image(systemName: "star.circle.fill")
-                                                .font(.system(size: 30))
+                                                .font(.system(.largeTitle))
                                                 .symbolRenderingMode(.palette)
                                                 .foregroundStyle(masterName == character ? .black : .gray, masterName == character ? .yellow : .ourLightGray)
                                         }
@@ -138,12 +138,13 @@ struct DrawingView: View {
                                             Image(systemName: "questionmark.circle.fill")
                                                 .symbolRenderingMode(.palette)
                                                 .foregroundStyle(.black, .yellow)
-                                                .font(.system(size: 30))
+                                                .font(.system(.largeTitle))
                                         }
 
                                     }
                                 })
         .tint(.black)
+        .navigationBarBackButtonHidden(isShowingPopovers) // Oculta apenas o botão de volta
     }
     
     var commandsButton: some View {
@@ -172,6 +173,7 @@ struct DrawingView: View {
                                     .opacity(isShowingCommands ? 1 : 0)
                             }
                             HStack {
+                                
                                 Button {
                                     undoManager?.undo()
                                 } label: {
@@ -303,9 +305,11 @@ struct DrawingView: View {
                                     Text("Ascenders")
                                 }
                                 Spacer()
-                                Text("Ascender in typography refers to the part of a letter that extends above the X line of a type or font. Letters with very short or missing ascenders can be difficult to read.")
-                                    .font(.system(size: 13))
-                                    .padding()
+                                ScrollView {
+                                    Text("Ascender in typography refers to the part of a letter that extends above the X line of a type or font. Letters with very short or missing ascenders can be difficult to read.")
+                                        .font(.system(.callout))
+                                        .padding()
+                                }
                                 Spacer()
                             }
                             .frame(width: 234, height: 203)
@@ -353,9 +357,11 @@ struct DrawingView: View {
                                     Text("Descenders")
                                 }
                                 Spacer()
-                                Text("Descenders are the parts that extend below the base line. Letters with very long or short descenders can create a visual imbalance in the text.")
-                                    .font(.system(size: 13))
-                                    .padding()
+                                ScrollView {
+                                    Text("Descenders are the parts that extend below the base line. Letters with very long or short descenders can create a visual imbalance in the text.")
+                                        .font(.system(.callout))
+                                        .padding()
+                                }
                                 Spacer()
                             }
                             .frame(width: 234, height: 203)
@@ -391,9 +397,11 @@ struct DrawingView: View {
                                     Text("X-Height")
                                 }
                                 Spacer()
-                                Text("The x-height is the term applied to the distance between the baseline and the midline. Observing the x-height is important for solving typographic legibility problems.")
-                                    .font(.system(size: 13))
-                                    .padding()
+                                ScrollView {
+                                    Text("The x-height is the term applied to the distance between the baseline and the midline. Observing the x-height is important for solving typographic legibility problems.")
+                                        .font(.system(.callout))
+                                        .padding()
+                                }
                                 Spacer()
                             }
                             .frame(width: 234, height: 203)

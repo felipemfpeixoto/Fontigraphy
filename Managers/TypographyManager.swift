@@ -19,6 +19,7 @@ class TypographyManager: ObservableObject {
                 let data = try Data(contentsOf: fileURL)
                 let typographies = try JSONDecoder().decode(MyTypographies.self, from: data)
                 self.myTypographies = typographies
+                print(self.myTypographies)
             } catch {
                 print("Error loading typographies: \(error.localizedDescription)")
             }
@@ -61,6 +62,7 @@ class TypographyManager: ObservableObject {
         let newTypography = Typography(name: name, characters: characters)
         myTypographies.createdTypographies.append(newTypography)
         saveTypographies()
+        loadTypographies()
     }
     
     func editCharacterSVGString(typographyName: String, character: String, newSVGString: String, newDrawing: PKDrawing?, pngDrawing: Data?) {
@@ -99,8 +101,10 @@ class TypographyManager: ObservableObject {
             print("Typography not found")
             return
         }
-        
+        print(name)
+        print(index)
         myTypographies.createdTypographies.remove(at: index)
         saveTypographies()
+        loadTypographies()
     }
 }

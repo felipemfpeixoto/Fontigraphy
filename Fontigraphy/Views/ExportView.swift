@@ -60,7 +60,8 @@ struct ExportView: View {
                         Spacer()
                         VStack {
                             Text(typography.name)
-                                .font(.system(size: 64).weight(.bold))
+                                .font(.system(size: UIFontMetrics.default.scaledValue(for: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize + 33)))
+
                             ShareLink(item: documentsDirectory.appendingPathComponent(fileName)) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 100)
@@ -69,10 +70,10 @@ struct ExportView: View {
                                     HStack {
                                         Image(systemName: "square.and.arrow.up")
                                             .foregroundStyle(Color.black)
-                                            .font(.system(size: 30).weight(.semibold))
+                                            .font(.system(.largeTitle).weight(.semibold))
                                         Text("Share TTF")
                                             .foregroundStyle(.black)
-                                            .font(.system(size: 20))
+                                            .font(.system(.title2))
                                     }
                                 }
                             }
@@ -85,7 +86,7 @@ struct ExportView: View {
                                         .frame(width: 92, height: 31)
                                     Text("Close")
                                         .foregroundStyle(.yellow)
-                                        .font(.system(size: 15).weight(.medium))
+                                        .font(.system(.body).weight(.medium))
                                 }
                                 .padding()
                             })

@@ -22,7 +22,7 @@ struct MyToggleStyle: ToggleStyle {
                         .foregroundColor(.black)
                         .overlay(
                             Text("Aa")
-                                .font(.system(size: 15).weight(.bold))
+                                .font(.system(.body).weight(.bold))
                                 .foregroundColor(.yellow)
                         )
                         .offset(x: configuration.isOn ? 11 : -11, y: 0)

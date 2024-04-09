@@ -79,7 +79,7 @@ struct CreateAlphabetView: View {
                 HStack {
                     Text(fontName)
                         .foregroundStyle(.black)
-                        .font(.system(size: 48).weight(.bold))
+                        .font(.system(size: UIFontMetrics.default.scaledValue(for: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize + 17)).bold())
                     Spacer()
                     menuButton
                     exportButton
@@ -321,7 +321,7 @@ struct ExportingSheet: View {
                         }, label: {
                             Image(systemName: "x.circle")
                                 .foregroundStyle(.white)
-                                .font(.system(size: 50))
+                                .font(.system(size: UIFontMetrics.default.scaledValue(for: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize + 19)))
                         })
                         .padding(30)
                         Spacer()
@@ -334,7 +334,7 @@ struct ExportingSheet: View {
                                 .foregroundStyle(.yellow)
                             Image(systemName: "square.and.arrow.up")
                                 .foregroundStyle(Color.black)
-                                .font(.system(size: 50))
+                                .font(.system(size: UIFontMetrics.default.scaledValue(for: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize + 19)))
                         }
                     }
                     Spacer()
